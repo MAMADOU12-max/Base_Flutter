@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'widget.dart';
+import 'basics_widget/widget.dart';
 
 // first way to run general root app
 // void main () => (runApp(new App());
@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
         return new  MaterialApp(
               title: 'Base Flutter\'s widgets ',
               theme: ThemeData(
-                 primarySwatch: Colors.brown,  // define theme application
+                 primarySwatch: Colors.blueGrey,  // define theme application
               ),
               home: Home(), // for call scalford (widget for default route)
              debugShowCheckedModeBanner: false, // remove a banner
@@ -45,7 +45,7 @@ class _Home extends State<Home> {
 
         appBar: AppBar(  // App bar page home application
            title: Text(
-              'Base Flutter Learning',
+              'Creative Dual',
                style: TextStyle(  // for styled text on the navbar
                   color: Colors.white,
                   fontStyle: FontStyle.italic,
@@ -88,8 +88,8 @@ class _Home extends State<Home> {
         ),
 
         body: Container(  // body application
-           // color: Colors.white,  // for define background color body
-            // height: 80.0,  width: 34.0 // bad way to define height or width => that's not adapt on different screen
+             // color: Colors.white,  // for define background color body
+             // height: 80.0,  width: 34.0 // bad way to define height or width => that's not adapt on different screen
              height: MediaQuery.of(context).size.height ,  // height body (best way)
              // width: MediaQuery.of(context).size.width / 1.5,
              // margin: EdgeInsets.all(12.3), // margin all side
@@ -127,15 +127,14 @@ class _Home extends State<Home> {
                           child: Container(
                               decoration: BoxDecoration(
                                   image: const DecorationImage(
-                                     image: AssetImage(  // image from local application
-                                         'images/beautycrach.jpg'
-                                     ),
-
+                                       image: AssetImage(  // image from local application
+                                           'images/beautycrach.jpg'
+                                       ),
                                       // image: NetworkImage(  // image from network
                                       //     // 'https://media.geeksforgeeks.org/wp-content/cdn-uploads/logo.png'
                                       //   'https://images.unsplash.com/photo-1622070888550-71c712e737bd?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=80',
                                       // ),
-                                      fit: BoxFit.fill, // custom apparence image
+                                      fit: BoxFit.fill, // custom appearence image
                                   ),
                                   border: Border.all(
                                       // color: const Color(0xFF000000), // define color also

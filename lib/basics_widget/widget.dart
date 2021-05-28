@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutterbase/basics_widget/pop-input-widget.dart';
 
 class Widgetdart extends StatefulWidget {
     @override
@@ -21,29 +22,52 @@ class _Widgetdart extends State<Widgetdart> {
     return new Scaffold(
         appBar: AppBar(
              title:  Text(
-                'More Widgets Flutter',
+                 'More Widgets Flutter',
              ),
-            backgroundColor: Colors.blueGrey,
+            actions: [
+                 IconButton(
+                     icon: Icon(
+                         Icons.add_circle_outline_outlined,
+                         color: Colors.white,
+                         size: 25,
+                     ),
+                     onPressed: () => {
+                          Navigator.push(context, new MaterialPageRoute( builder: (BuildContext context) {
+                                     return new PopInputWidget();
+                          })),
+                     },
+                 ),
+            ],
         ),
         body: Container(  // for can define padding and margin container in the all page
+            // color background body
+            decoration: new BoxDecoration(  // for decorate contain container
+                gradient: new LinearGradient(    // grandient color (s beautiful)
+                    colors: [Colors.red, Colors.cyan],   // two color gradient
+                    begin: Alignment.centerRight,  // repartition color gradient
+                    end: Alignment.centerLeft,
+                    tileMode: TileMode.clamp
+                ),
+            ),
+
             padding: EdgeInsets.all(12),  // padding all side
             child:  Center(   // center all body horizontally
                 child: Column( // take care vertical page (same property like row)
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly, // position of children's elements
                       children: [
                           Text( // Widget Text
-                            'le widget text est très important et ç a nous permet d\'écrire du contenu dans nos pages',
-                            textAlign: TextAlign.center, // for define position text
-                            style: TextStyle(
-                                color: Colors.brown[500],  // color text (text choose degre color we want)
-                                fontSize: 20.0, // define size text
-                                fontStyle: FontStyle.italic, // define style text
-                                letterSpacing: 1.5, // spacement letter
-                                backgroundColor: Colors.white, // color background
-                                decorationStyle: TextDecorationStyle.wavy,
-                            ),
-                            maxLines: 2, // define max line
-                            overflow: TextOverflow.clip,
+                              'le widget text est très important et ç a nous permet d\'écrire du contenu dans nos pages',
+                              textAlign: TextAlign.center, // for define position text
+                              style: TextStyle(
+                                  color: Colors.white,  // color text (text choose degre color we want)
+                                  fontSize: 20.0, // define size text
+                                  fontStyle: FontStyle.italic, // define style text
+                                  letterSpacing: 1.5, // spacement letter
+                                  // backgroundColor: Colors.white, // color background
+                                  decorationStyle: TextDecorationStyle.wavy,
+                              ),
+                              maxLines: 2, // define max line
+                              overflow: TextOverflow.clip,
                           ),
                           Card(  // card
                               elevation: 5.0,
@@ -75,29 +99,29 @@ class _Widgetdart extends State<Widgetdart> {
                                         color: Colors.brown,
                                     ),
                                     Container(
-                                      height: MediaQuery.of(context).size.height /10,
-                                      width: largeur / 8,
-                                      color: Colors.yellow,
+                                        height: MediaQuery.of(context).size.height /10,
+                                        width: largeur / 8,
+                                        color: Colors.yellow,
                                     ),
                                     Container(
-                                      height: MediaQuery.of(context).size.height /10,
-                                      width: largeur / 8,
-                                      color: Colors.redAccent,
+                                        height: MediaQuery.of(context).size.height /10,
+                                        width: largeur / 8,
+                                        color: Colors.redAccent,
                                     ),
                                     Container(
-                                      height: MediaQuery.of(context).size.height /10,
-                                      width: largeur / 8,
-                                      color: Colors.blue,
+                                        height: MediaQuery.of(context).size.height /10,
+                                        width: largeur / 8,
+                                        color: Colors.blue,
                                     ),
                                     Container(
-                                      height: MediaQuery.of(context).size.height /10,
-                                      width: largeur / 8,
-                                      color: Colors.pinkAccent,
+                                        height: MediaQuery.of(context).size.height /10,
+                                        width: largeur / 8,
+                                        color: Colors.pinkAccent,
                                     ),
                                     Container(
-                                      height: MediaQuery.of(context).size.height /10,
-                                      width: largeur / 8,
-                                      color: Colors.white,
+                                        height: MediaQuery.of(context).size.height /10,
+                                        width: largeur / 8,
+                                        color: Colors.white,
                                     ),
                                 ],
                               ),
@@ -118,7 +142,7 @@ class _Widgetdart extends State<Widgetdart> {
                               ),
                           ),
 
-// ------------------------------------------------- Button Flutter ----------------------------------------------------- //
+// ------------------------------------------------- Button && Pop-up Flutter ---------------------------------------------------- //
 
                       // sites to visit for more information
                       //  https://www.kindacode.com/article/working-with-elevatedbutton-in-flutter/
@@ -128,7 +152,7 @@ class _Widgetdart extends State<Widgetdart> {
 
                           Container( // Icon down
                               height: largeur / 6 ,  //largeur is equal to width container define behove
-                              color: Colors.white,
+                              // color: Colors.white,  // backgroundColor
                               child: Row(
                                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                   children: [
@@ -176,7 +200,6 @@ class _Widgetdart extends State<Widgetdart> {
                           ),
                           Container( // Icon down
                               height: largeur / 6 ,  //largeur is equal to width container define behove
-                              color: Colors.white,
                               child: Row(
                                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                   children: [
@@ -187,8 +210,12 @@ class _Widgetdart extends State<Widgetdart> {
                                           ),
                                       ),
                                       ElevatedButton.icon(
-                                          onPressed: () {},
-                                          label: Text('ElevationButtonIcon'),
+                                          onPressed: ()  => {
+                                              Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) {
+                                                    return new PopInputWidget();
+                                              })),
+                                          },
+                                          label: Text('Pop-up & Input'),
                                           icon: Icon(Icons.add),
                                       )
                                   ],
