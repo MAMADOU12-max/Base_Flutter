@@ -1,5 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
+import 'package:flutterbase/basics_widget/interractif-widgets.dart';
 
 class PopInputWidget extends StatefulWidget {
    @override
@@ -14,22 +16,35 @@ class _PopInputWidget extends State<PopInputWidget> {
 
     @override
 
-    //  function snackbar => always recommended
+    //  --------- More Ingenus to do theses functions on the page statelesswidget and call him every want needed -------//
+
+    // function snackbar => always recommended
     void callSnackbar () {   // it's banner display in the screen
           SnackBar snackBar = new SnackBar(
-              content: new Text(
-                  ' This is my snackar, so cool no ',
+               content: new Text(
+                    'This is my snackar, so cool no ',
                     style: TextStyle(
                          fontSize: 17.0,
                          fontStyle: FontStyle.italic,
                          color: Colors.black
                     ),
                     textAlign: TextAlign.center,     // center this text
-              ),
-               duration: new Duration(seconds: 2),   // define duration appear snackbar
+               ),
+               duration: new Duration(seconds: 5),   // define duration appear snackbar
                backgroundColor: Colors.greenAccent,  // define background
                elevation: 12.3,                      // do elevation
                padding: EdgeInsets.only(left: 12),   // define padding
+               behavior: SnackBarBehavior.floating,  // define type appearence snackbar  => default (fixed)
+               // width: 123.0,                      // define width snackbar
+               action: SnackBarAction(               // element to display from snackbar and do an action
+                    label: 'Undo',                   // define label
+                    textColor: Colors.cyan,          // color label
+                    onPressed: () {                  // action after click label (by default dismiss snackbar)
+                       print('dismiss it');
+                       // Navigator.pop(context);    // that's allow to go recent page
+                    },
+               ),
+               // animation: Animation.,
           );
           ScaffoldMessenger.of(context).showSnackBar(snackBar); // for display him in the scaffold
     }
@@ -105,8 +120,9 @@ class _PopInputWidget extends State<PopInputWidget> {
         return new Scaffold(
               appBar: AppBar(
                   title: Text(
-                     'Pop-up & Input'
+                     'Pop up'
                   ),
+                 centerTitle: true,
               ),
               body: Container(
                   decoration: new BoxDecoration(  // for decorate contain container
@@ -163,9 +179,122 @@ class _PopInputWidget extends State<PopInputWidget> {
                                      ),
                                    )
                                ),
+                              // Interractif Widget
+                               Container(  // for direction button
+                                   alignment: Alignment.center,
+                                   padding: EdgeInsets.all(22.0),
+                                   child: ElevatedButton(
+                                     // do function like this when we has a parameter
+                                     onPressed: ( () {
+                                         Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) {
+                                              return new InterractifWidget();
+                                         }));
+                                     }),
+                                     style: ButtonStyle(
+                                       backgroundColor: MaterialStateProperty.all(Colors.brown),
+                                     ),
+                                     child: Text(
+                                         'Go Interractif Widget'
+                                     ),
+                                   )
+                               ),
                            ],
                        ),
                   )
+              ),
+              bottomNavigationBar: BottomAppBar(
+                  child: Container(
+                      height: MediaQuery.of(context).size.width /6,
+                      padding: EdgeInsets.only(top: 12.0, bottom: 2.0),
+                      color: Colors.blueGrey[500],
+                      child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                              InkWell(
+                                  onTap: () => print('house'),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                    children: [
+                                      Icon(
+                                        Icons.house,
+                                        size: 29.0,
+                                        semanticLabel: 'House',
+                                        color: Colors.white,
+                                      ),
+                                      Text(
+                                        'Shop',
+                                        style: TextStyle(
+                                            color: Colors.white,
+                                            fontStyle: FontStyle.italic
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                              ),
+                              InkWell(
+                                onTap: () => print('explore'),
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                  children: [
+                                    Icon(
+                                      Icons.explore,
+                                      size: 29.0,
+                                      color: Colors.white,
+                                    ),
+                                    Text(
+                                        'Explore',
+                                         style: TextStyle(
+                                            color: Colors.white,
+                                            fontStyle: FontStyle.italic
+                                         ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              InkWell(
+                                onTap: () => print('search'),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                    children: [
+                                      Icon(
+                                        Icons.search,
+                                        size: 29.0,
+                                        color: Colors.white,
+                                      ),
+                                      Text(
+                                        'Search',
+                                        style: TextStyle(
+                                            color: Colors.white,
+                                            fontStyle: FontStyle.italic
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                              ),
+                              InkWell(
+                                  onTap: () => print('setting'),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                    children: [
+                                      Icon(
+                                        Icons.settings,
+                                        size: 29.0,
+                                        semanticLabel: 'Setting',
+                                        color: Colors.white,
+                                      ),
+                                      Text(
+                                        'Setting',
+                                        style: TextStyle(
+                                            color: Colors.white,
+                                            fontStyle: FontStyle.italic
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                              ),
+                          ],
+                      ),
+                  ),
               ),
         );
     }

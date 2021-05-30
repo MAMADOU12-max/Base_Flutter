@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'basics_widget/widget.dart';
 
 // first way to run general root app
@@ -7,6 +8,11 @@ import 'basics_widget/widget.dart';
 void main () {
     // for running this widget app
      runApp(new MyApp());
+     // for fixed orientation application
+     //  SystemChrome.setPreferredOrientations([
+     //        DeviceOrientation.portraitUp,
+     //  ]);
+
 }
 
 class MyApp extends StatelessWidget {
@@ -20,6 +26,7 @@ class MyApp extends StatelessWidget {
               ),
               home: Home(), // for call scalford (widget for default route)
              debugShowCheckedModeBanner: false, // remove a banner
+
         );
     }
 }
@@ -35,13 +42,17 @@ class Home extends StatefulWidget {
 
 // _ => for reference that it is the class for state
 class _Home extends State<Home> {
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
+
+    Orientation orientation = MediaQuery.of(context).orientation;  // get orientation device
+    print(orientation);
+
    return new Scaffold(
         backgroundColor: Colors.white30, // define background scaffold
-
-   // ------------------------------------------------- - Appbar - ----------------------------------------------------------- //
+   // ---------------------------------------------- - Appbar - ----------------------------------------------------- //
 
         appBar: AppBar(  // App bar page home application
            title: Text(
